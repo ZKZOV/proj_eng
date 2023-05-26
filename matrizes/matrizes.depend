@@ -1,0 +1,14 @@
+# depslib dependency file v1.0
+1684972486 source:/home/zk/Documents/matrizes/main.c
+	<stdio.h>
+	<stdlib.h>
+	"matrizes.h"
+
+1684975252 source:/home/zk/Documents/matrizes/matrizes.c
+	<stdio.h>
+	<stdlib.h>
+	<locale.h>
+	"matrizes.h"
+
+1684975632 /home/zk/Documents/matrizes/matrizes.h
+
