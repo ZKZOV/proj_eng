@@ -6,7 +6,7 @@ double real;
 double imag;
 }complexo;
 
-int print_name();
+void print_name();
 
 int soma(complexo a[][3], complexo b[][3], complexo mxt[][3]);
 int teste_soma();

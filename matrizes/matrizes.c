@@ -4,8 +4,8 @@
 #include "matrizes.h"
 
 
-print_name()
-{
+void print_name(){
+
 printf("┬┴┬┴┬┴┬┴┬┴┬┴┬ EQUIPE ┴┬┴┬┴┬┴┬┴┬┴┬┴┬ \n\n");
 
 char name1[]= "Izaac Soares";
@@ -34,7 +34,7 @@ complexo d[][3] = { { 5, 4, 8, 9, 2, 6},
                     { 3, 2, 1, 9, 4, 6},
                     { 6, 7, 5, 1, 9, 1} };
 
-complexo mxt[][3];
+complexo mxt[3][3];
 
 
 
