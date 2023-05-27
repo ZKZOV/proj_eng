@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include "matrizes.h"
 
-int main () {
+int main(){
 
 print_name();
 teste_transposta();
