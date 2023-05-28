@@ -407,7 +407,7 @@ return 0;
 }
 
 /* PRODUTO ESCALAR */
-int produto_escalar(complexo a[][3], complexo b[][3], complexo mxt[][3]){
+int produto_escalar(complexo a[3][3], complexo b[3][3], complexo mxt[3][3]){
     int i,j;
     for(i = 0; i < 3; i++)
     {
@@ -415,16 +415,19 @@ int produto_escalar(complexo a[][3], complexo b[][3], complexo mxt[][3]){
         {
         mxt[i][j].real = ((a[i][j].real) * (b[i][j].real)-(a[i][j].imag)*(b[i][j].imag));
         mxt[i][j].imag = ((a[i][j].real) * (b[i][j].imag)+(b[i][j].real)*(a[i][j].imag));
-
         }
     }
 return 0;
 }
 
+// Example
+// -------
 
 int teste_produtoEscalar(){
     int i,j;
+
     printf("====== TESTE DO PRODUTO ESCALAR ========\n\n");
+
     printf("MATRIZ A:\n\n");
     for(i = 0; i < 3; i++){
     printf("\t |");
@@ -435,7 +438,9 @@ int teste_produtoEscalar(){
     }
 
     printf("\n");
+
     printf("MATRIZ B:\n\n");
+
     for(i = 0; i < 3; i++){
     printf("\t |");
         for(j = 0; j < 3; j++){
@@ -444,7 +449,9 @@ int teste_produtoEscalar(){
         printf("\n");
     }
     printf("\n");
+
     produto_escalar(a,b, mxt);
+
     printf("PRODUTO A e B:\n\n");
     for(i = 0; i < 3; i++){
         for(j = 0; j < 3; j++){
@@ -454,6 +461,7 @@ int teste_produtoEscalar(){
     }
 
     printf("\n");
+
     printf("MATRIZ C:\n\n");
     for(i = 0; i < 3; i++){
     printf("\t |");
@@ -483,24 +491,31 @@ int teste_produtoEscalar(){
         printf("\n");
     }
     printf("\n");
+return 0;
 }
 
-// PRODUTO MATRICIAL //////////////////////////////////////////////////////////
-int produto_matricial(complexo a[][3], complexo b[][3], complexo mxt[][3]){
+// PRODUTO MATRIAL //////////////////////////////////////////////////////////
+int produto_matricial(complexo a[3][3], complexo b[3][3], complexo mxt[3][3]){
 int i,j;
  for(i = 0 ; i < 3; i++){
         for(j = 0; j < 3; j++){
-        mxt[i][j].real = (a[i][j].real*c[j][i].real-b[i][j].real*d[i][j].real+(a[i][j].real*d[i][j].real+b[i][j].real*c[i][j].real));
+        mxt[i][j].real = ((a[i][j].real) * (b[i][j].real)+(a[i][j].imag)*(b[i][j].imag));
+        mxt[i][j].imag = ((a[i][j].real) * (b[i][j].imag)+(b[i][j].real)*(a[i][j].imag));
     }
   }
+return 0;
 }
+
+
 int teste_produtoMatricial(){
 int i,j;
     printf("====== TESTE DO PRODUTO MATRICIAL ========\n\n");
+
     printf("MATRIX A:\n\n");
- for(i = 0; i < 3; i++){
+
+    for(i = 0; i < 3; i++){
     printf("\t |");
-        for(j = 0; j < 3; j++){
+    for(j = 0; j < 3; j++){
     printf(" %.1f |", a[i][j].real);
             }
         printf("\n");
@@ -510,8 +525,7 @@ int i,j;
     printf("MATRIZ B:\n\n");
     for(i = 0; i < 3; i++){
     printf("\t |");
-        for(j = 0; j < 3; j++)
-            {
+        for(j = 0; j < 3; j++){
                 printf(" %.1f |", b[i][j].real);
             }
         printf("\n");
@@ -520,21 +534,18 @@ int i,j;
     produto_matricial(a,b,mxt);
 
     printf("PRODUTO A e B:\n\n");
-
     for(i = 0; i < 3; i++){
         for(j = 0; j < 3; j++){
-
-                printf("\t %.1f", mxt[i][j].real);
+            printf("\t %.1f + %.1fj", mxt[i][j].real, mxt[i][j].imag);
             }
         printf("\n");
     }
      printf("\n");
     printf("MATRIZ C:\n\n");
     for(i = 0; i < 3; i++){
-    printf("\t |");
-        for(j = 0; j < 3; j++)
-            {
-                printf(" %.1f + %.1fj |",c[i][j].real,c[i][j].imag);
+            printf("\t |");
+    for(j = 0; j < 3; j++){
+            printf(" %.1f + %.1fj |",c[i][j].real,c[i][j].imag);
             }
         printf("\n");
     }
@@ -543,8 +554,7 @@ int i,j;
     printf("MATRIZ D:\n\n");
     for(i = 0; i < 3; i++){
     printf("\t |");
-        for(j = 0; j < 3; j++)
-            {
+        for(j = 0; j < 3; j++){
                 printf(" %.1f + %.1fj |",d[i][j].real,d[i][j].imag);
             }
         printf("\n");
@@ -552,13 +562,15 @@ int i,j;
     printf("\n");
 
     produto_matricial(c,d, mxt);
+
     printf("PRODUTO MATRICIAL C X D:\n\n");
+
     for(i = 0; i < 3; i++){
         for(j = 0; j < 3; j++){
-                printf("\t %.1f", mxt[i][j].real + mxt[i][j].imag);
+                printf("\t %.1f + %.1fj", mxt[i][j].real, mxt[i][j].imag);
+          }
         printf("\n");
     }
- printf("\n");
-
- return 0;}
+    printf("\n");
+return 0;
 }
