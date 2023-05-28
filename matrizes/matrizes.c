@@ -1,10 +1,20 @@
+/*════════════════════════════•°• IMPLEMETAÇÃO •°•════════════════════════════*/
+
+/*************************************************************************************************************
+ * Aqui temos a importação das bibliotecas e a inclusão do arquivo matrizes.h.
+   Nesse arquivo temos todas as declaração das assinaturas das funções que iremos utilizar aqui nesse arquivo.
+ *************************************************************************************************************
+*/
+
+
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <locale.h>
 #include "matrizes.h"
 
 
-void print_name()
+void print_name()     //!< uma função print_name.
 {
 printf("┬┴┬┴┬┴┬┴┬┴┬┴┬ EQUIPE ┴┬┴┬┴┬┴┬┴┬┴┬┴┬ \n\n");
 
@@ -14,7 +24,10 @@ char name2[]= "Amanda Reis";
 printf(" %s\n %s\n \n", name1,name2);
 }
 
-/* CONTEÚDO DA MATRIZ DECLADA*/
+/**
+* CONTEÚDO DA MATRIZ DECLARADA
+*/
+
 complexo a[3][3] = { {{1,2},{3,2},{5,8}},
                      {{3,9},{2,3},{1,4}},
                      {{3,2},{7,8},{3,3}} };
@@ -34,11 +47,18 @@ complexo d[3][3] = { {{1,2},{3,2},{5,8}},
 
 complexo mxt[3][3];
 
+/************************************************
+ *             SOMA MATRIZ COMPLEXA
+ ***********************************************/
 
+int soma(complexo a[3][3],complexo b[3][3], complexo mxt[3][3]){  //!< uma função soma.
 
-/* SOMA MATRIZ COMPLEXA */
+//! A função hospedará três parâmetros; complexo a, b e mxt;
+//! As matrizes a e b receberá os valores das matrizes declaradas;
+//! mxt receberá os valores das somas das matrizes .
+/*! OBS: A logica do código da função soma será a mesma para outras funções aqui implementada. O que mudará são apenas as operações matemáticas.
+ */
 
-int soma(complexo a[][3],complexo b[][3], complexo mxt[][3]){
     int i,j;
     for(i = 0; i < 3; i++){
     for(j = 0; j < 3; j++){
@@ -49,49 +69,58 @@ int soma(complexo a[][3],complexo b[][3], complexo mxt[][3]){
     return 0;
 }
 
-int teste_soma(){
+/////////////////////////////////////////////////
+/////////////TESTE OPERAÇÃO SOMA////////////////
+///////////////////////////////////////////////
+
+int teste_soma(){  //!< Aqui função teste_soma.
     int i,j;
     printf("====== TESTE DA OPERAÇÃO SOMA ========\n\n");
     printf("MATRIZ A:\n\n");
 
-     for(i = 0;i < 3; i++){
-     printf("\t |");
-            for(j = 0; j < 3; j++){
-                    printf(" %.1f |", a[i][j].real);
+// Preenchimento Da Matriz A.
+//! Para inicializar a matriz 3x3 utilizamos uma estrutura de for aninhado.
+/*! OBS: A logica do código da estrutura for aninhado para inicializar a matriz servira como modelo para as outras estruturas do for aqui implementado.
+ */
+
+     for(i = 0;i < 3; i++){                                //!< Aqui controle da linha.
+     printf("\t |");								      //!< Aqui imprimir | que da impressão de [].
+            for(j = 0; j < 3; j++){					     //!< Aqui controle da coluna.
+                    printf(" %.1f |", a[i][j].real);    //!< Aqui imprimir a matriz A.
                 }
                 printf("\n");
         }
         printf("\n");
 
-    printf("MATRIZ B:\n\n");
+    printf("MATRIZ B:\n\n");		
 
-     for(i = 0;i < 3; i++){
-     printf("\t |");
-            for(j = 0; j < 3; j++){
-                    printf(" %.1f |",b[i][j].real);
+     for(i = 0;i < 3; i++){                                  //!< Aqui controle da linha.
+     printf("\t |");                                        //!< Aqui imprimir | que da impressão de [].
+            for(j = 0; j < 3; j++){                        //!< Aqui controle da coluna.
+                    printf(" %.1f |",b[i][j].real);       //!< Aqui imprimir a matriz B.
                 }
                 printf("\n");
         }
         printf("\n");
 
-    soma(a,b, mxt);
+    soma(a,b, mxt);      //!<  Aqui soma matriz c,d e mxt receberá o valor dessa soma.
 
      printf("RESULTADO A + B: \n\n");
 
-     for(i = 0;i < 3; i++){
-            for(j = 0; j < 3; j++){
-                    printf(" \t %.1f", mxt[i][j].real);
+     for(i = 0;i < 3; i++){                                        //!< Aqui controle da linha.
+            for(j = 0; j < 3; j++){                               //!< Aqui controle da coluna.
+                    printf(" \t %.1f", mxt[i][j].real);          //!< Aqui imprimir a matriz A e B, parte real.
                 }
                 printf("\n");
         }
         printf("\n\n");
 
-    printf("MATRIZ C:\n\n");
+    printf("MATRIZ C:\n\n");                              
 
-    for(i = 0; i < 3; i++){
-        printf("\t |");
-            for(j = 0; j < 3; j++){
-                    printf(" %.1f + %.1fj |",c[i][j].real,c[i][j].imag);
+    for(i = 0; i < 3; i++){                        //!< Aqui controle da linha.
+        printf("\t |");							  //!< Aqui imprimir | que da impressão de [].
+            for(j = 0; j < 3; j++){              //!< Aqui controle da coluna.
+                printf(" %.1f + %.1fj |",c[i][j].real,c[i][j].imag);    //!< Aqui imprimir a matriz C, parte real e imaginária.
                 }
                 printf("\n");
         }
@@ -99,22 +128,22 @@ int teste_soma(){
 
     printf("MATRIZ D:\n\n");
 
-    for(i = 0; i < 3; i++){
-     printf("\t |");
-            for(j = 0; j < 3; j++){
-                    printf(" %.1f + %.1fj |", d[i][j].real, d[i][j].imag);
+    for(i = 0; i < 3; i++){                      //!< Aqui controle da linha.    
+     printf("\t |");							//!< Aqui imprimir | que da impressão de [].
+            for(j = 0; j < 3; j++){            //!< Aqui controle da coluna.
+                printf(" %.1f + %.1fj |", d[i][j].real, d[i][j].imag);   //!< Aqui imprimir a matriz D.
                 }
                 printf("\n");
         }
         printf("\n\n");
 
 
-    soma(c,d, mxt);
-     printf("RESULTADO C + D: \n\n");
+    soma(c,d, mxt);  //!<  Aqui soma matriz c,d e mxt receberá o valor dessa soma.
+    printf("RESULTADO C + D: \n\n");
 
-     for(i = 0; i < 3; i++){
+     for(i = 0; i < 3; i++){                             
             for(j = 0; j < 3; j++){
-                    printf("\t %.1f + %.1fj", mxt[i][j].real, mxt[i][j].imag);
+                printf("\t %.1f + %.1fj", mxt[i][j].real, mxt[i][j].imag); //!< Aqui imprimia a soma dos valores das matrizes C e D, parte real e imaginária.
                 }
                 printf("\n");
         }
@@ -126,7 +155,7 @@ return 0;
 /* TRANSPOSTA MATRIZ COMPLEXA */
 
 
-int transposta(complexo a[][3], complexo mxt[][3]){
+int transposta(complexo a[3][3], complexo mxt[3][3]){
     int i,j;
     for(i = 0; i < 3; i++)
         {
@@ -186,7 +215,7 @@ printf("MATRIZ B:\n\n");
 
 /* CONJUGADA MATRIZ COMPLEXA */
 
-int conjugada(complexo a[][3], complexo mxt[][3]){
+int conjugada(complexo a[3][3], complexo mxt[3][3]){
 
    int i,j;
    for(i = 0; i < 3; i++)
@@ -317,7 +346,7 @@ return 0;
 
 /* SUBTRAÇÃO MATRIZ COMPLEXA */
 
-int subtracao(complexo a[][3], complexo b[][3], complexo mxt[][3])
+int subtracao(complexo a[3][3], complexo b[3][3], complexo mxt[3][3])
 {
     int i,j;
     for(i = 0; i < 3; i++){
