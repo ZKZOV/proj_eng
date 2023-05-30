@@ -252,7 +252,7 @@ int teste_hermitiana(){
     for(i = 0; i < 3; i++){                              //!< Aqui controle da linha.
     printf("\t |");                                     //!< Aqui imprimir | que da impressão de [].
         for(j = 0; j < 3; j++){                        //!< Aqui controle da coluna.
-            printf(" %.1fj |", a[i][j].imag);         //!< Aqui imprimir a matriz B.         
+            printf(" %.1fj |", a[i][j].imag);         //!< Aqui imprimir a matriz A.         
         }
         printf("\n");
 }
