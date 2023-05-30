@@ -151,16 +151,18 @@ int teste_soma(){  //!< Aqui função teste_soma.
 return 0;
 }
 
+//************************************************
+ *            TRANSPOSTA MATRIZ COMPLEXA
+ ***********************************************/
 
-/* TRANSPOSTA MATRIZ COMPLEXA */
-
+//! A função hospedará dois parâmetros; complexo a, mxt;
+//! As matrizes a receberá o valore da matriz declarada;
+//! mxt receberá a troca das linhas por colunas das matrizes declaradas.
 
 int transposta(complexo a[3][3], complexo mxt[3][3]){
     int i,j;
-    for(i = 0; i < 3; i++)
-        {
-            for(j = 0; j < 3; j++)
-            {
+    for(i = 0; i < 3; i++){
+            for(j = 0; j < 3; j++){
                 mxt[i][j].real = a[j][i].real;
                 mxt[i][j].imag = a[j][i].imag;
             }
@@ -168,15 +170,21 @@ int transposta(complexo a[3][3], complexo mxt[3][3]){
     return 0;
 }
 
+/////////////////////////////////////////////////
+/////////////TESTE TRANSPOSTA///////////////////
+///////////////////////////////////////////////
 
-int teste_transposta(){
+//! Preenchimento Da Matriz A.
+//! Para inicializar a matriz 3x3 utilizamos uma estrutura de for aninhado.
+
+int teste_transposta(){     //!< função teste_transposta.
     int i,j;
     printf("====== TESTE DA OPERAÇÃO TRANSPOSTA ======\n\n");
     printf("MATRIZ A:\n\n");
-    for(i = 0; i < 3; i++){
-    printf("\t |");
-            for(j = 0; j < 3; j++){
-                printf(" %.1f |",a[i][j].real);
+    for(i = 0; i < 3; i++){                                  //!< Aqui controle da linha.
+    printf("\t |");                                         //!< Aqui imprimir | que da impressão de [].
+            for(j = 0; j < 3; j++){                        //!< Aqui controle da coluna.
+                printf(" %.1f |",a[i][j].real);           //!< Aqui imprimir a matriz A.
             }
             printf("\n");
         }
@@ -184,19 +192,19 @@ int teste_transposta(){
     printf("TRANSPOSTA A:\n\n");
 
     transposta(a, mxt);
-    for(i = 0; i < 3; i++){
-            for(j = 0; j < 3; j++){
-                printf("\t %.1f ",mxt[i][j].real);
+    for(i = 0; i < 3; i++){                                    //!< Aqui controle da linha.
+            for(j = 0; j < 3; j++){                           //!< Aqui controle da coluna.
+                printf("\t %.1f ",mxt[i][j].real);           //!< Aqui imprimir a transposta da matriz A.
             }
             printf("\n");
         }
         printf("\n");
 
 printf("MATRIZ B:\n\n");
-    for(i = 0; i < 3; i++){
-         printf("\t |");
-            for(j = 0; j < 3; j++){
-                printf(" %.1f + %.1fj |",b[i][j].real,b[i][j].imag);
+    for(i = 0; i < 3; i++){                                                //!< Aqui controle da linha.
+         printf("\t |");                                                  //!< Aqui imprimir | que da impressão de [].
+            for(j = 0; j < 3; j++){                                      //!< Aqui controle da coluna.
+                printf(" %.1f + %.1fj |",b[i][j].real,b[i][j].imag);     //!< Aqui imprimir a matriz B.
             }
             printf("\n");
         }
@@ -204,145 +212,15 @@ printf("MATRIZ B:\n\n");
     printf("TRANSPOSTA B:\n\n");
 
     transposta(b, mxt);
-    for(i = 0; i < 3; i++){
-            for(j = 0; j < 3; j++){
-                printf("\t %.1f + %.1fj", mxt[i][j].real, mxt[i][j].imag);
+    for(i = 0; i < 3; i++){                                                       //!< Aqui controle da linha.
+            for(j = 0; j < 3; j++){                                              //!< Aqui controle da coluna.
+                printf("\t %.1f + %.1fj", mxt[i][j].real, mxt[i][j].imag);      //!< Aqui imprimir a transposta da matriz B.
             }
             printf("\n");
         }
     printf("\n");
-}
-
-/* CONJUGADA MATRIZ COMPLEXA */
-
-int conjugada(complexo a[3][3], complexo mxt[3][3]){
-
-   int i,j;
-   for(i = 0; i < 3; i++)
-   {
-       for(j = 0; j < 3; j++)
-       {
-           mxt[i][j].imag = a[i][j].imag*(-1);
-           mxt[i][j].real = a[i][j].real;
-       }
-   }
-   return 0;
-}
-
-
-int teste_conjugada(){
-
-    int i,j;
-    printf("====== TESTA DA CONJUGADA ========\n\n");
-    printf("MATRIZ A:\n\n");
-    for(i = 0; i < 3; i++){
-    printf("\t |");
-            for(j = 0; j < 3; j++){
-                printf(" %.1fj |",b[i][j].imag);
-            }
-            printf("\n");
-        }
-        printf("\n");
-    printf("CONJUGADA A:\n\n");
-
-    conjugada(b, mxt);
-
-    for(i = 0; i < 3; i++){
-            for(j = 0; j < 3; j++){
-                printf("\t %.1fj", mxt[i][j].imag);
-            }
-            printf("\n");
-        }
-        printf("\n");
-
-printf("MATRIZ B:\n\n");
-    for(i = 0; i < 3; i++){
-    printf("\t |");
-            for(j = 0; j < 3; j++)
-            {
-                printf(" %.1f + %.1fj |",b[i][j].real,b[i][j].imag);
-            }
-            printf("\n");
-        }
-        printf("\n");
-    printf("CONJUGADA B:\n\n");
-
-    conjugada(b, mxt);
-
-    for(i = 0; i < 3; i++)
-        {
-            for(j = 0; j < 3; j++){
-                printf("\t %.1f + %.1fj", mxt[i][j].real, mxt[i][j].imag);
-            }
-            printf("\n");
-        }
-        printf("\n");
-
-}
-
-
-/* HERMITIANA MATRIZ COMPLEXA */
-int hermitiana(complexo a[][3], complexo mxt[][3]){
-complexo i[3][3];
-
-   transposta( a, i);
-   conjugada( i, mxt);
-
 return 0;
-
 }
-int teste_hermitiana(){
-
-    int i,j;
-    printf("====== TESTE DA HERMITIANA ========\n\n");
-    printf("MATRIZ A:\n\n");
-
-    for(i = 0; i < 3; i++){
-    printf("\t |");
-        for(j = 0; j < 3; j++){
-            printf(" %.1fj |", a[i][j].imag);
-        }
-        printf("\n");
-}
-    printf("\n");
-
-    printf("HERMITIANA A:\n\n");
-
-    hermitiana(a, mxt);
-
-    for(i = 0; i < 3; i++){
-            for(j = 0; j < 3; j++)
-            {
-                printf("\t %.1fj", mxt[i][j].imag);
-            }
-            printf("\n");
-        }
-    printf("\n");
-
-    printf("MATRIZ B:\n\n");
-    for(i = 0; i < 3; i++){
-    printf("\t |");
-            for(j = 0; j < 3; j++){
-                    printf(" %.1f + %.1fj |",a[i][j].real,a[i][j].imag);
-                }
-            printf("\n");
-        }
-    printf("\n");
-    printf("HERMITIANA B:\n\n");
-
-    for(i = 0; i < 3; i++){
-            for(j = 0; j < 3; j++){
-                    printf("\t %.1f + %.1fj", mxt[i][j].real, mxt[i][j].imag);
-                }
-                printf("\n");
-        }
-    printf("\n");
-
-return 0;
-
-}
-
-
 
 /* SUBTRAÇÃO MATRIZ COMPLEXA */
 
@@ -431,6 +309,7 @@ int teste_subtracao(){
         }
         printf("\n");
 return 0;
+
 }
 
 /* PRODUTO ESCALAR */
