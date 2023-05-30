@@ -229,6 +229,12 @@ return 0;
  ***********************************************/
 
 int hermitiana(complexo a[3][3], complexo mxt[3][3]){
+
+//! A função hospedará dois parâmetros; complexo a e mxt;
+//! As matrizes receberá os valores das matrizes declaradas;
+//! o elemento na linha e coluna é igual ao conjugado complexo do elemento na j linha e i coluna;
+//! mxt receberá sua própria transposta conjugada .
+
 complexo i[3][3];
 
    transposta( a, i);
@@ -243,10 +249,10 @@ int teste_hermitiana(){
     printf("====== TESTE DA HERMITIANA ========\n\n");
     printf("MATRIZ A:\n\n");
 
-    for(i = 0; i < 3; i++){
-    printf("\t |");
-        for(j = 0; j < 3; j++){
-            printf(" %.1fj |", a[i][j].imag);
+    for(i = 0; i < 3; i++){                              //!< Aqui controle da linha.
+    printf("\t |");                                     //!< Aqui imprimir | que da impressão de [].
+        for(j = 0; j < 3; j++){                        //!< Aqui controle da coluna.
+            printf(" %.1fj |", a[i][j].imag);         //!< Aqui imprimir a matriz B.         
         }
         printf("\n");
 }
@@ -256,29 +262,29 @@ int teste_hermitiana(){
 
     hermitiana(a, mxt);
 
-    for(i = 0; i < 3; i++){
-            for(j = 0; j < 3; j++)
-            {
-                printf("\t %.1fj", mxt[i][j].imag);
+    for(i = 0; i < 3; i++){                             //!< Aqui controle da linha.                         
+            for(j = 0; j < 3; j++){                    //!< Aqui controle da coluna.  
+                printf("\t %.1fj", mxt[i][j].imag);   //!< Aqui imprimir hermitiana A.
             }
             printf("\n");
         }
     printf("\n");
 
-    printf("MATRIZ B:\n\n");
-    for(i = 0; i < 3; i++){
-    printf("\t |");
-            for(j = 0; j < 3; j++){
+    printf("MATRIZ B:\n\n");     
+    for(i = 0; i < 3; i++){                                                       //!< Aqui controle da linha
+    printf("\t |");                                                              //!< Aqui imprimir | que da impressão de [].
+            for(j = 0; j < 3; j++){                                             //!< Aqui controle da coluna.
                     printf(" %.1f + %.1fj |",a[i][j].real,a[i][j].imag);
                 }
             printf("\n");
         }
     printf("\n");
     printf("HERMITIANA B:\n\n");
+    hermitiana(b, mxt);
 
-    for(i = 0; i < 3; i++){
-            for(j = 0; j < 3; j++){
-                    printf("\t %.1f + %.1fj", mxt[i][j].real, mxt[i][j].imag);
+    for(i = 0; i < 3; i++){                                                         //!< Aqui controle da linha.
+            for(j = 0; j < 3; j++){                                                //!< Aqui controle da coluna.
+                    printf("\t %.1f + %.1fj", mxt[i][j].real, mxt[i][j].imag);    //!< Aqui imprimir hermitiana B.
                 }
                 printf("\n");
         }
