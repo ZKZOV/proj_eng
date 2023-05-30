@@ -151,8 +151,8 @@ int teste_soma(){  //!< Aqui função teste_soma.
 return 0;
 }
 
-//************************************************
- *            TRANSPOSTA MATRIZ COMPLEXA
+/************************************************
+ *             TRANSPOSTA MATRIZ COMPLEXA
  ***********************************************/
 
 //! A função hospedará dois parâmetros; complexo a, mxt;
