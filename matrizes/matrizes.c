@@ -109,7 +109,7 @@ int teste_soma(){  //!< Aqui função teste_soma.
 
      for(i = 0;i < 3; i++){                                        //!< Aqui controle da linha.
             for(j = 0; j < 3; j++){                               //!< Aqui controle da coluna.
-                    printf(" \t %.1f", mxt[i][j].real);          //!< Aqui imprimir a matriz A e B, parte real.
+                    printf(" \t %.1f", mxt[i][j].real);          //!< Aqui imprimir a matriz resultante, da soma da matrizes A e B.
                 }
                 printf("\n");
         }
@@ -143,7 +143,7 @@ int teste_soma(){  //!< Aqui função teste_soma.
 
      for(i = 0; i < 3; i++){                             
             for(j = 0; j < 3; j++){
-                printf("\t %.1f + %.1fj", mxt[i][j].real, mxt[i][j].imag); //!< Aqui imprimia a soma dos valores das matrizes C e D, parte real e imaginária.
+                printf("\t %.1f + %.1fj", mxt[i][j].real, mxt[i][j].imag); //!< Aqui imprimir a matriz resultante, da soma da matrizes C e D.
                 }
                 printf("\n");
         }
@@ -155,11 +155,12 @@ return 0;
  *             TRANSPOSTA MATRIZ COMPLEXA
  ***********************************************/
 
+int transposta(complexo a[3][3], complexo mxt[3][3]){
+
 //! A função hospedará dois parâmetros; complexo a, mxt;
 //! As matrizes a receberá o valore da matriz declarada;
 //! mxt receberá a troca das linhas por colunas das matrizes declaradas.
 
-int transposta(complexo a[3][3], complexo mxt[3][3]){
     int i,j;
     for(i = 0; i < 3; i++){
             for(j = 0; j < 3; j++){
@@ -174,10 +175,11 @@ int transposta(complexo a[3][3], complexo mxt[3][3]){
 /////////////TESTE TRANSPOSTA///////////////////
 ///////////////////////////////////////////////
 
+int teste_transposta(){     //!< função teste_transposta.
+   
 //! Preenchimento Da Matriz A.
 //! Para inicializar a matriz 3x3 utilizamos uma estrutura de for aninhado.
 
-int teste_transposta(){     //!< função teste_transposta.
     int i,j;
     printf("====== TESTE DA OPERAÇÃO TRANSPOSTA ======\n\n");
     printf("MATRIZ A:\n\n");
@@ -222,9 +224,16 @@ printf("MATRIZ B:\n\n");
 return 0;
 }
 
-/* SUBTRAÇÃO MATRIZ COMPLEXA */
+/************************************************
+ *             SUBTRAÇÃO DE MATRIZ COMPLEXA
+ ***********************************************/
 
 int subtracao(complexo a[3][3], complexo b[3][3], complexo mxt[3][3])
+
+//! A função hospedará três parâmetros; complexo a, b e mxt;
+//! As matrizes a e b receberá os valores das matrizes declaradas;
+//! mxt receberá os valores das subtrações das matrizes .
+
 {
     int i,j;
     for(i = 0; i < 3; i++){
@@ -236,16 +245,23 @@ int subtracao(complexo a[3][3], complexo b[3][3], complexo mxt[3][3])
 return 0;
 }
 
+/////////////////////////////////////////////////
+/////////////TESTE TRANSPOSTA///////////////////
+///////////////////////////////////////////////
+
 int teste_subtracao(){
+
+// Preenchimento Da Matriz A.
+//! Para inicializar a matriz 3x3 utilizamos uma estrutura de for aninhado.
 
     int i,j;
     printf("====== TESTE DA OPERAÇÃO SUBTRAÇÃO ========\n\n");
     printf("MATRIZ A:\n\n");
 
-    for(i = 0; i < 3; i++){
-    printf("\t |");
-        for(j = 0; j < 3; j++){
-                printf(" %.1f |",a[i][j].real);
+    for(i = 0; i < 3; i++){                             //!< Aqui controle da linha.                       
+    printf("\t |");                                    //!< Aqui imprimir | que da impressão de [].
+        for(j = 0; j < 3; j++){                       //!< Aqui controle da coluna. 
+                printf(" %.1f |",a[i][j].real);      //!< Aqui imprimir a matriz A.
             }
         printf("\n");
     }
@@ -253,10 +269,10 @@ int teste_subtracao(){
 
     printf("MATRIZ B:\n\n");
 
-    for(i = 0; i < 3; i++){
-    printf("\t |");
-        for(j = 0; j < 3; j++){
-                printf(" %.1f |",b[i][j].real);
+    for(i = 0; i < 3; i++){                                //!< Aqui controle da linha.
+    printf("\t |");                                       //!< Aqui imprimir | que da impressão de [].
+        for(j = 0; j < 3; j++){                          //!< Aqui controle da coluna. 
+                printf(" %.1f |",b[i][j].real);         //!< Aqui imprimir a matriz A.
             }
         printf("\n");
     }
@@ -265,11 +281,9 @@ int teste_subtracao(){
     subtracao(a,b, mxt);
     printf("RESULTADO A - B:\n\n");
 
-    for(i = 0; i < 3; i++)
-    {
-        for(j = 0; j < 3; j++)
-            {
-                printf("\t %.1f", mxt[i][j].real);
+    for(i = 0; i < 3; i++){                                 //!< Aqui controle da linha.
+        for(j = 0; j < 3; j++){                            //!< Aqui controle da coluna. 
+                printf("\t %.1f", mxt[i][j].real);        //!< Aqui imprimir a matriz resultante, da subtração da matrizes A e B.
             }
         printf("\n");
     }
@@ -277,10 +291,10 @@ int teste_subtracao(){
 
     printf("MATRIZ C:\n\n");
 
-    for(i = 0; i < 3; i++){
-     printf("\t |");
-        for(j = 0; j < 3; j++){
-                printf(" %.1f + %.1fj |",c[i][j].real,c[i][j].imag);
+    for(i = 0; i < 3; i++){                                                  //!< Aqui controle da linha.
+     printf("\t |");                                                        //!< Aqui imprimir | que da impressão de [].
+        for(j = 0; j < 3; j++){                                            //!< Aqui controle da coluna.
+                printf(" %.1f + %.1fj |",c[i][j].real,c[i][j].imag);      //!< Aqui imprimir a matriz C.
             }
         printf("\n");
     }
@@ -288,10 +302,10 @@ int teste_subtracao(){
 
     printf("MATRIZ D:\n\n");
 
-    for(i = 0; i < 3; i++){
-    printf("\t |");
-        for(j = 0; j < 3; j++){
-                printf(" %.1f + %.1fj |",d[i][j].real,d[i][j].imag);
+    for(i = 0; i < 3; i++){                                                   //!< Aqui controle da linha.
+    printf("\t |");                                                          //!< Aqui imprimir | que da impressão de [].
+        for(j = 0; j < 3; j++){                                             //!< Aqui controle da coluna.
+                printf(" %.1f + %.1fj |",d[i][j].real,d[i][j].imag);       //!< Aqui imprimir a matriz C.
             }
         printf("\n");
     }
@@ -301,9 +315,9 @@ int teste_subtracao(){
 
     printf("RESULTADO C - D:\n\n");
 
-    for(i = 0; i < 3; i++){
-            for(j = 0 ; j < 3; j++){
-                    printf("\t %.1f + %.1fj", mxt[i][j].real, mxt[i][j].imag);
+    for(i = 0; i < 3; i++){                                                            //!< Aqui controle da linha.
+            for(j = 0 ; j < 3; j++){                                                  //!< Aqui controle da coluna.
+                    printf("\t %.1f + %.1fj", mxt[i][j].real, mxt[i][j].imag);       //!< Aqui imprimir a matriz resultante, da subtração da matrizes A e D.
             }
             printf("\n");
         }
