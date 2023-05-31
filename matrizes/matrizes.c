@@ -495,12 +495,31 @@ return 0;
 }
 
 // PRODUTO MATRICIAL //////////////////////////////////////////////////////////
-int produto_matricial(complexo a[3][3], complexo b[3][3], complexo mxt[3][3]){
+int produto_matricial(complexo a[3][3], complexo mxt[3][3]){
+
+//PRECISA MELHORA O CÓDIGO AINDA!!
 int i,j;
- for(i = 0 ; i < 3; i++){
+   for(i = 0 ; i < 3; i++){
         for(j = 0; j < 3; j++){
-        mxt[i][j].real = ((a[i][j].real) * (b[i][j].real)+(a[i][j].imag)*(b[i][j].imag));
-        mxt[i][j].imag = ((a[i][j].real) * (b[i][j].imag)+(b[i][j].real)*(a[i][j].imag));
+
+        if(i==j) {
+        	mxt[i][j].real = 1;
+			}
+        else {
+            mxt[i][j].imag= 0;
+			}
+/**
+         if(j==3-i-1){ ///
+
+				mxt[i][j].imag = -1;
+			}
+			else {
+				mxt[i][j].real = 0;
+			}
+*/
+
+          mxt[i][j].real = mxt[i][j].real + (a[i][j].real) * (a[i][j].real);
+          mxt[i][j].imag = mxt[i][j].imag + (b[i][j].imag) * (b[i][j].imag);
     }
   }
 return 0;
@@ -522,6 +541,18 @@ int i,j;
     }
     printf("\n");
 
+    produto_matricial(a, mxt);
+    printf("PRODUTO MATRICIAL x I:\n\n");
+
+    for(i = 0; i < 3; i++){
+  //    printf("\t |");
+        for(j = 0; j < 3; j++){
+            printf("\t %.1f", a[i][j].real);
+            }
+        printf("\n");
+    }
+     printf("\n");
+
     printf("MATRIZ B:\n\n");
     for(i = 0; i < 3; i++){
     printf("\t |");
@@ -530,17 +561,19 @@ int i,j;
             }
         printf("\n");
     }
-    printf("\n");
-    produto_matricial(a,b,mxt);
 
-    printf("PRODUTO A e B:\n\n");
+    printf("\n");
+    produto_matricial(b, mxt);
+    printf("PRODUTO MATRICIAL B x I:\n\n");
     for(i = 0; i < 3; i++){
+  //    printf("\t |");
         for(j = 0; j < 3; j++){
-            printf("\t %.1f + %.1fj", mxt[i][j].real, mxt[i][j].imag);
+            printf("\t %.1f", b[i][j].real);
             }
         printf("\n");
     }
-     printf("\n");
+
+    printf("\n");
     printf("MATRIZ C:\n\n");
     for(i = 0; i < 3; i++){
             printf("\t |");
@@ -551,23 +584,37 @@ int i,j;
     }
 
     printf("\n");
+    produto_matricial(c, mxt);
+    printf("PRODUTO MATRICIAL C X I:\n\n");
+
+    for(i = 0; i < 3; i++){
+        for(j = 0; j < 3; j++){
+//        mxt[j] = mxt[j]+(mxt[i][j].imag);
+                printf("\t %.1fj", c[i][j].imag*(-1));
+          }
+        printf("\n");
+    }
+
+    printf("\n");
     printf("MATRIZ D:\n\n");
     for(i = 0; i < 3; i++){
     printf("\t |");
         for(j = 0; j < 3; j++){
-                printf(" %.1f + %.1fj |",d[i][j].real,d[i][j].imag);
+                printf(" %.1f + %.1fj |",d[i][j].real, d[i][j].imag);
             }
         printf("\n");
     }
+
     printf("\n");
 
-    produto_matricial(c,d, mxt);
+    produto_matricial(d, mxt);
 
-    printf("PRODUTO MATRICIAL C X D:\n\n");
+    printf("PRODUTO MATRICIAL D X I:\n\n");
 
     for(i = 0; i < 3; i++){
         for(j = 0; j < 3; j++){
-                printf("\t %.1f + %.1fj", mxt[i][j].real, mxt[i][j].imag);
+//        mxt[j] = mxt[j]+(mxt[i][j].imag);
+                printf("\t %.1fj", d[i][j].imag*(-1));
           }
         printf("\n");
     }
