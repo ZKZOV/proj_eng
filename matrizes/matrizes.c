@@ -172,7 +172,7 @@ int transposta(complexo a[3][3], complexo mxt[3][3]){
 /////////////TESTE TRANSPOSTA///////////////////
 ///////////////////////////////////////////////
 
-int teste_transposta(){     //!< função teste_transposta.
+int teste_transposta(){ //!< função teste_transposta.
    
 //! Preenchimento Da Matriz A.
 //! Para inicializar a matriz 3x3 utilizamos uma estrutura de for aninhado.
@@ -218,6 +218,83 @@ printf("MATRIZ B:\n\n");
             printf("\n");
         }
     printf("\n");
+return 0;
+}
+
+/************************************************
+ *           CONJUGADA MATRIZ COMPLEXA
+ ***********************************************/
+
+//! A função hospedará dois parâmetros; complexo a, mxt;
+//! As matrizes a receberá o valore da matriz declarada;
+//! mxt receberá cada elemento da matriz pelo respectivo complexo conjugado.
+
+int conjugada(complexo a[3][3], complexo mxt[3][3]){
+
+   int i,j;
+   for(i = 0; i < 3; i++)
+   {
+       for(j = 0; j < 3; j++)
+       {
+           mxt[i][j].imag = a[i][j].imag*(-1);
+           mxt[i][j].real = a[i][j].real;
+       }
+   }
+   return 0;
+}
+
+/////////////////////////////////////////////////
+/////////////TESTE CONJUGADA////////////////////
+///////////////////////////////////////////////
+
+int teste_conjugada(){
+
+//! Preenchimento Da Matriz A.
+//! Para inicializar a matriz 3x3 utilizamos uma estrutura de for aninhado.
+
+    int i,j;
+    printf("====== TESTA DA CONJUGADA ========\n\n");
+    printf("MATRIZ A:\n\n");
+    for(i = 0; i < 3; i++){                               //!< Aqui controle da linha.               
+    printf("\t |");                                      //!< Aqui imprimir | que da impressão de [].
+            for(j = 0; j < 3; j++){                     //!< Aqui controle da coluna.
+                printf(" %.1fj |",b[i][j].imag);       //!< Aqui imprimir a matriz A.
+            }
+            printf("\n");
+        }
+        printf("\n");
+    printf("CONJUGADA A:\n\n");
+
+    conjugada(b, mxt);
+
+    for(i = 0; i < 3; i++){                                     //!< Aqui controle da coluna.
+            for(j = 0; j < 3; j++){                            //!< Aqui controle da linha.
+                printf("\t %.1fj", mxt[i][j].imag);           //!< Aqui imprimir a conjugada da matriz A.
+            }
+            printf("\n");
+        }
+        printf("\n");
+
+printf("MATRIZ B:\n\n");
+    for(i = 0; i < 3; i++){                                                    //!< Aqui controle da linha.
+    printf("\t |");                                                           //!< Aqui imprimir | que da impressão de [].
+            for(j = 0; j < 3; j++){                                          //!< Aqui controle da coluna.
+                printf(" %.1f + %.1fj |",b[i][j].real,b[i][j].imag);        //!< Aqui imprimir a matriz B.
+            }
+            printf("\n");
+        }
+        printf("\n");
+    printf("CONJUGADA B:\n\n");
+
+    conjugada(b, mxt);
+
+    for(i = 0; i < 3; i++){                                                      //!< Aqui controle da linha.                                          
+            for(j = 0; j < 3; j++){                                             //!< Aqui controle da coluna.
+                printf("\t %.1f + %.1fj", mxt[i][j].real, mxt[i][j].imag);     //!< Aqui imprimir a conjugada da matriz B.
+            }
+            printf("\n");
+        }
+        printf("\n");
 return 0;
 }
 
