@@ -46,7 +46,7 @@ int teste_produtoEscalar();
 
 //Função para calcular produto de números complexos. A estrutura que lidar com duas partes reais e imaginárias.
 
-int produto_matricial(complexo a[][3], complexo b[][3], complexo mxt[][3]);
+int produto_matricial(complexo a[3][3], complexo mxt[3][3]);
 int teste_produtoMatricial();
 
 //
