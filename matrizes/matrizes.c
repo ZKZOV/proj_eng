@@ -72,7 +72,7 @@ int soma(complexo a[3][3],complexo b[3][3], complexo mxt[3][3]){  //!< uma funç
 
 int teste_soma(){  //!< Aqui função teste_soma.
     int i,j;
-    printf("====== TESTE DA OPERAÇÃO SOMA ========\n\n");
+    printf("====== TESTE DA OPERAÇÃO SOMA ======\n\n");
     printf("MATRIZ A:\n\n");
 
 // Preenchimento Da Matriz A.
@@ -253,7 +253,7 @@ int teste_conjugada(){
 //! Para inicializar a matriz 3x3 utilizamos uma estrutura de for aninhado.
 
     int i,j;
-    printf("====== TESTA DA CONJUGADA ========\n\n");
+    printf("====== TESTA DA CONJUGADA ======\n\n");
     printf("MATRIZ A:\n\n");
     for(i = 0; i < 3; i++){                               //!< Aqui controle da linha.               
     printf("\t |");                                      //!< Aqui imprimir | que da impressão de [].
@@ -320,7 +320,7 @@ return 0;
 
 int teste_hermitiana(){
     int i,j;
-    printf("====== TESTE DA HERMITIANA ========\n\n");
+    printf("====== TESTE DA HERMITIANA ======\n\n");
     printf("MATRIZ A:\n\n");
 
     for(i = 0; i < 3; i++){                              //!< Aqui controle da linha.
@@ -398,7 +398,7 @@ int teste_subtracao(){
 //! Para inicializar a matriz 3x3 utilizamos uma estrutura de for aninhado.
 
     int i,j;
-    printf("====== TESTE DA OPERAÇÃO SUBTRAÇÃO ========\n\n");
+    printf("====== TESTE DA OPERAÇÃO SUBTRAÇÃO ======\n\n");
     printf("MATRIZ A:\n\n");
 
     for(i = 0; i < 3; i++){                             //!< Aqui controle da linha.                       
@@ -502,7 +502,7 @@ int teste_produtoEscalar(){
 //! Para inicializar a matriz 3x3 utilizamos uma estrutura de for aninhado.
 
     int i,j;
-    printf("====== TESTE DO PRODUTO ESCALAR ========\n\n");
+    printf("====== TESTE DO PRODUTO ESCALAR ======\n\n");
 
     printf("MATRIZ A:\n\n");
     for(i = 0; i < 3; i++){                              //!< Aqui controle da linha. 
