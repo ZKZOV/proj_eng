@@ -470,23 +470,20 @@ return 0;
 }
 
 /************************************************
- *             PRODUTO DE MATRIZ COMPLEXA
+ *             PRODUTO ESCALAR COMPLEXA
  ***********************************************/
-
-int produto_escalar(complexo a[3][3], complexo b[3][3], complexo mxt[3][3]){
 
 //! A função hospedará três parâmetros; complexo a, b e mxt;
 //! As matrizes a e b receberá os valores das matrizes declaradas;
-//! mxt receberá os valores dos produtos das matrizes;
-/*! OBS: Para multiplicar dois números complexos a + bj e c + dj, realizamos (ac – bd) + (ad + bc)j;
-/*!      Por exemplo: a multiplicação de 1+2i e 2+1i será 0+5j.
- */
+//! mxt receberá os valores das multiplicação das matrizes.
+
+int produto_escalar(complexo a[3][3], complexo b[3][3], complexo mxt[3][3]){
 
     int i,j;
     for(i = 0; i < 3; i++){
     for(j = 0; j < 3; j++){
-        mxt[i][j].real = ((a[i][j].real) * (b[i][j].real)-(a[i][j].imag)*(b[i][j].imag));
-        mxt[i][j].imag = ((a[i][j].real) * (b[i][j].imag)+(b[i][j].real)*(a[i][j].imag));
+        mxt[i][j].real = mxt[i][j].real + (a[i][j].real) * (a[i][j].real);
+        mxt[i][j].imag = mxt[i][j].imag + (b[i][j].imag) * (b[i][j].imag);
         }
     }
 return 0;
@@ -498,14 +495,14 @@ return 0;
 
 int teste_produtoEscalar(){
 
-// Preenchimento Da Matriz A.
+//! Preenchimento Da Matriz A.
 //! Para inicializar a matriz 3x3 utilizamos uma estrutura de for aninhado.
 
     int i,j;
     printf("====== TESTE DO PRODUTO ESCALAR ======\n\n");
 
     printf("MATRIZ A:\n\n");
-    for(i = 0; i < 3; i++){                              //!< Aqui controle da linha. 
+    for(i = 0; i < 3; i++){                              //!< Aqui controle da linha.
     printf("\t |");                                     //!< Aqui imprimir | que da impressão de [].
         for(j = 0; j < 3; j++){                        //!< Aqui controle da coluna.
                 printf(" %.1f |", a[i][j].real);      //!< Aqui imprimir a matriz A.
@@ -528,10 +525,10 @@ int teste_produtoEscalar(){
 
     produto_escalar(a,b, mxt);
 
-    printf("PRODUTO A e B:\n\n");
-    for(i = 0; i < 3; i++){                                                      //!< Aqui controle da linha.
-        for(j = 0; j < 3; j++){                                                 //!< Aqui controle da coluna.
-                printf("\t %.1f + %.1fj", mxt[i][j].real, mxt[i][j].imag);     //!< Aqui imprimir a matriz resultante do produto da matrizes A e B.
+    printf("PRODUTO ESCALAR A . B:\n\n");
+    for(i = 0; i < 3; i++){                              //!< Aqui controle da linha.
+        for(j = 0; j < 3; j++){                         //!< Aqui controle da coluna.
+                printf("\t %.1f", mxt[i][j].real);     //!< Aqui imprimir a matriz resultante do produto da matrizes A e B.
             }
         printf("\n");
     }
@@ -548,7 +545,7 @@ int teste_produtoEscalar(){
     }
     printf("\n");
     printf("MATRIZ D:\n\n");
-    for(i = 0; i < 3; i++){                                                    //!< Aqui controle da linha.  
+    for(i = 0; i < 3; i++){                                                    //!< Aqui controle da linha.
     printf("\t |");                                                           //!< Aqui imprimir | que da impressão de [].
         for(j = 0; j < 3; j++){                                              //!< Aqui controle da coluna.
                 printf(" %.1f + %.1fj |", d[i][j].real, d[i][j].imag);      //!< Aqui imprimir a matriz D.
@@ -561,7 +558,7 @@ int teste_produtoEscalar(){
     produto_escalar(c,d, mxt);
 
     printf("PRODUTO ESCALAR C . D:\n\n");
-    for(i = 0; i < 3; i++){                                                        //!< Aqui controle da linha. 
+    for(i = 0; i < 3; i++){                                                        //!< Aqui controle da linha.
         for(j = 0; j < 3; j++){                                                   //!< Aqui controle da coluna.
                 printf("\t %.1f + %.1fj", mxt[i][j].real, mxt[i][j].imag);       //!< Aqui imprimir a matriz resultante do produto da matrizes C e D.
             }
