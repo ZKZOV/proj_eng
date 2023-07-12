@@ -1,33 +1,40 @@
-# Nome do arquivo de saída
-OUTPUT := meu_programa
+# Nome do arquivo Makefile
 
-# Diretório de inclusão do GSL
-GSL_INCLUDE := /usr/include
+OUTPUT := programa
 
-# Diretório das bibliotecas do GSL
-GSL_LIB := /usr/lib/x86_64-linux-gnu
+# Compilador
+CC = gcc
 
-# Opções de compilação
-CC := gcc
-CFLAGS := -Wall -Wextra -I usr/include/
-LDFLAGS := -L/usr/lib/x86_64-linux-gnu/ -lgsl
-LDLIBS := gcc main.c matrizes.c -o a.out -lgsl -lgslcblas -lm
+# Flags do compilador
+CFLAGS = -Wall -Wextra -std=c11
+
+# Diretório de inclusão da biblioteca GSL
+GSL_INCLUDE = -I/usr/include/
+
+# Diretório das bibliotecas da GSL
+GSL_LIB = -L/usr/lib/x86_64-linux-gnu/ -lgsl
+
+# Nome do executável
+TARGET = programa
+
+# Arquivos fonte
+SRCS = main.c matrizes.c
+
+# Objetos gerados
+OBJS = $(SRCS:.c=.o)
 
 # Regra de compilação
-$(OUTPUT): meu_programa.c
-    $(CC) $(CFLAGS) $(LDFLAGS) -o $@ $< $(LDLIBS)
+$(TARGET): $(OBJS)
+	$(CC) $(CFLAGS) -o $(TARGET) $(OBJS) -L$(GSL_LIB) -lgsl -lgslcblas -lm
 
-# Regra de limpeza
-clean:
-    rm -f $(OUTPUT)
-
-clean:
-	rm -f $(TARGET)
+# Regra para compilar os arquivos fonte
+%.o: %.c
+	$(CC) $(CFLAGS) -I$(GSL_INCLUDE) -c $< -o $@
 
 doc: 
 	@doxygen 
 	@open doxygen .Doxyfile
 
-
-
-
+# Regra para limpar os arquivos objeto e o executável
+clean:
+	rm -f $(OBJS) $(TARGET)
